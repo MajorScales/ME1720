@@ -11,10 +11,10 @@ const int PWM_B = 10; // Power pin motor b
 // Sensors
 
 const int SUN = A1; 
-const int FORCE = A0;
+int BUTTON = 1; 
 
 // Initalizing variables for sensor pins
-int force = 0;
+
 int solar = 0;
 
 // Variables
@@ -34,6 +34,7 @@ pinMode(PWM_A, OUTPUT);
 pinMode(DIR_AB, OUTPUT);
 pinMode(DIR_BB, OUTPUT);
 pinMode(PWM_B, OUTPUT);
+  pinMode(BUTTON, INPUT); // Casues the pin in 1 to accept input 
 
 // Sensor Pins
 pinMode(SUN, INPUT);
@@ -48,21 +49,21 @@ void loop(){
 
   // put your main code here, to run repeatedly:
   // Prints out valuesa of the pins
-Serial.println (analogRead(A0));
+
 Serial.println (analogRead(A1));
   // Pin variables initalizion
-force = analogRead(A0);
+
 solar = analogRead(A1);
   //Drive forward speed with DIR_AA high, andDIR_BA low
  
 // For when the force sensor has force less than one
-  if(force < 1)
+  if(digitalRead BUTTON == HIGH)
   {
   digitalWrite(DIR_AA,HIGH);
   digitalWrite(DIR_BA,LOW);
   analogWrite(PWM_A, 255);
 
-  delay(1000);
+  delay(2000);
 
   digitalWrite(DIR_AA, LOW);
   digitalWrite(DIR_BA,LOW);
